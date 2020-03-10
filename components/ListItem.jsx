@@ -1,18 +1,24 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import ListItem from "./components/ListItem";
+import { StyleSheet, Text, View, Image } from "react-native";
 
-export default function App() {
+const ListItem = props => {
   return (
-    <View style={styles.container}>
-      <ListItem
-        imageUrl="https://picsum.photos/200/300"
-        author="SampleNews"
-        title="Sample Title"
-      />
+    <View style={styles.itemContainer}>
+      <View style={styles.leftContainer}>
+        <Image
+          style={{ width: 100, height: 100 }}
+          source={{ uri: props.imageUrl }}
+        />
+      </View>
+      <View style={styles.rightContainer}>
+        <Text numberOfLines={3} style={styles.text}>
+          {props.title}
+        </Text>
+        <Text style={styles.subText}>{props.author}</Text>
+      </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -45,3 +51,5 @@ const styles = StyleSheet.create({
     color: "gray",
   },
 });
+
+export default ListItem;
