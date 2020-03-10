@@ -7,8 +7,8 @@ export default function App() {
     <View style={styles.container}>
       <ListItem
         imageUrl="https://picsum.photos/200/300"
-        author="SampleNews"
         title="Sample Title"
+        author="SampleNews"
       />
     </View>
   );
