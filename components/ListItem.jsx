@@ -5,7 +5,7 @@ const ListItem = ({ imageUrl, title, author }) => {
   return (
     <View style={styles.itemContainer}>
       <View style={styles.leftContainer}>
-        <Image style={{ width: 100, height: 100 }} source={{ uri: imageUrl }} />
+        <Image style={styles.thumbnail} source={{ uri: imageUrl }} />
       </View>
       <View style={styles.rightContainer}>
         <Text numberOfLines={3} style={styles.text}>
@@ -46,6 +46,10 @@ const styles = StyleSheet.create({
   subText: {
     fontSize: 12,
     color: "gray",
+  },
+  thumbnail: {
+    width: 100,
+    height: 100,
   },
 });
 

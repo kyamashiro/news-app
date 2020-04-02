@@ -1,17 +1,20 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import ListItem from "./components/ListItem";
+import articles from "./dummies/articles";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
+  const items = articles.map((article, index) => {
+    return (
       <ListItem
-        imageUrl="https://picsum.photos/200/300"
-        title="Sample Title"
-        author="SampleNews"
+        imageUrl={article.urlToImage}
+        title={article.title}
+        author={article.author}
+        key={index}
       />
-    </View>
-  );
+    );
+  });
+  return <View style={styles.container}>{items}</View>;
 }
 
 const styles = StyleSheet.create({
@@ -20,28 +23,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  itemContainer: {
-    height: 100,
-    width: "100%",
-    borderColor: "gray",
-    borderWidth: 1,
-    flexDirection: "row",
-  },
-  leftContainer: {
-    width: 100,
-  },
-  rightContainer: {
-    flex: 1,
-    flexDirection: "column",
-    padding: 10,
-    justifyContent: "space-between",
-  },
-  text: {
-    fontSize: 16,
-  },
-  subText: {
-    fontSize: 12,
-    color: "gray",
   },
 });
