@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, Platform, FlatList, SafeAreaView } from "react-native";
 import ListItem from "./components/ListItem";
 import articles from "./dummies/articles";
 
@@ -24,6 +24,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === "android" ? 25 : 0,
     backgroundColor: "#fff",
   },
 });
