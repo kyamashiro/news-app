@@ -6,7 +6,7 @@ import axios from "axios";
 import {API_KEY} from "react-native-dotenv";
 const URL = `http://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=${API_KEY}`;
 
-export default HomeScreen = () => {
+export default HomeScreen = ({navigation}) => {
   const fetchArticles = async () => {
     try {
       const response = await axios.get(URL);
@@ -25,7 +25,14 @@ export default HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={articles}
-        renderItem={({item}) => <ListItem imageUrl={item.urlToImage} title={item.title} author={item.author} />}
+        renderItem={({item}) => (
+          <ListItem
+            imageUrl={item.urlToImage}
+            title={item.title}
+            author={item.author}
+            onPress={() => navigation.navigate("Article")}
+          />
+        )}
         keyExtractor={(item, index) => index.toString()}
       />
     </SafeAreaView>

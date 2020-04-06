@@ -1,13 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const ListItem = ({ imageUrl, title, author }) => {
+const ListItem = ({ imageUrl, title, author, onPress }) => {
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
-        {!!imageUrl && (
-          <Image style={styles.thumbnail} source={{ uri: imageUrl }} />
-        )}
+        {!!imageUrl && <Image style={styles.thumbnail} source={{uri: imageUrl}} />}
       </View>
       <View style={styles.rightContainer}>
         <Text numberOfLines={3} style={styles.text}>
@@ -15,7 +14,7 @@ const ListItem = ({ imageUrl, title, author }) => {
         </Text>
         <Text style={styles.subText}>{author}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
