@@ -4,6 +4,9 @@ import {WebView} from "react-native-webview";
 import {useDispatch} from "react-redux";
 import {addClip, deleteClip} from "../store/actions/user";
 
+/**
+ * routeはHomeScreenから渡されたパラメータ
+ */
 export default ArticleScreen = ({route}) => {
   const {article} = route.params;
   const dispatch = useDispatch();
