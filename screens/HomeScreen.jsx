@@ -30,7 +30,15 @@ export default HomeScreen = ({navigation}) => {
             imageUrl={item.urlToImage}
             title={item.title}
             author={item.author}
-            onPress={() => navigation.navigate("Article")}
+            /**
+             * 記事をタップするとArticleScreenに遷移する
+             * 第2引数に渡したいパラメータをセットする
+             **/
+            onPress={() =>
+              navigation.navigate("Article", {
+                article: item,
+              })
+            }
           />
         )}
         keyExtractor={(item, index) => index.toString()}
