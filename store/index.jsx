@@ -1,11 +1,22 @@
-import {combineReducers, createStore} from "redux";
+import { combineReducers, createStore } from "redux";
 import userReducer from "./reducers/user";
-import {composeWithDevTools} from "redux-devtools-extension";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { persistReducer, persistStore } from "redux-persist";
+import { AsyncStorage } from "react-native";
 
 const rootReducer = combineReducers({
   user: userReducer,
 });
 
-const store = createStore(rootReducer, composeWithDevTools());
+const persistConfig = {
+  key: "root",
+  storage: AsyncStorage,
+  whitelist: ["user"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer, composeWithDevTools());
 
 export default store;
+export const persistor = persistStore(store);
